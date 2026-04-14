@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPM KING SUHAI</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:sans-serif;
+}
+
+/* BACKGROUND FULL */
+body{
+  height:100vh;
+  background:url('background.jpg') no-repeat center center/cover;
+  color:white;
+  overflow:hidden;
+}
+
+/* DARK LAYER */
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+}
+
+/* CONTAINER */
+.container{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+/* TITLE */
+.title{
+  font-size:28px;
+  font-weight:bold;
+  text-shadow:0 0 10px cyan,0 0 25px cyan;
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{ text-shadow:0 0 10px cyan;}
+  to{ text-shadow:0 0 30px cyan;}
+}
+
+/* BUTTON */
+.btn{
+  margin-top:20px;
+  padding:15px 25px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(45deg,#00f,#0ff);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  animation:shake 2s infinite;
+  box-shadow:0 0 15px cyan;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(2px);}
+  50%{transform:translateX(-2px);}
+  75%{transform:translateX(2px);}
+  100%{transform:translateX(0);}
+}
+
+/* LIST BOX */
+.list{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  max-height:75%;
+  background:rgba(255,255,255,0.9); /* putih */
+  color:black; /* teks hitam */
+  padding:20px;
+  overflow:auto;
+  transform:translateY(100%);
+  transition:0.5s;
+  border-top-left-radius:20px;
+  border-top-right-radius:20px;
+}
+
+.list.active{
+  transform:translateY(0);
+}
+
+.list h2{
+  color:black;
+  margin-bottom:10px;
+}
+
+.list p{
+  color:black;
+  line-height:1.6;
+}
+
+/* PARTICLE */
+.particle{
+  position:absolute;
+  width:3px;
+  height:15px;
+  background:white;
+  opacity:0.5;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(100vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+  <div class="title">JPM KING SUHAI</div>
+  <p id="waktu"></p>
+
+  <button class="btn" onclick="openList()">🔥 ORDER JPM KLIK 🔥</button>
+</div>
+
+<!-- LIST -->
+<div class="list" id="list">
+
+  <h2>DAFTAR HARGA</h2>
+  <p>
+  ▫️ 5K = 50 Member<br>
+  ▫️ 6K = 60 Member<br>
+  ▫️ 7K = 70 Member<br>
+  ▫️ 8K = 80 Member<br>
+  ▫️ 9K = 90 Member<br>
+  ▫️ 10K = 100 Member<br>
+  ▫️ 15K = 150 Member<br>
+  ▫️ 20K = 200 Member<br>
+  ▫️ 25K = 250 Member<br>
+  ▫️ 30K = 300 Member<br>
+  ▫️ 35K = 350 Member<br>
+  ▫️ 40K = 400 Member<br>
+  ▫️ 45K = 450 Member<br>
+  ▫️ 50K = 513 Member ⭐<br>
+  ▫️ 100K = FULL MEMBER 💯
+  </p>
+
+  <h2>PAYMENT</h2>
+  <p>
+  DANA: 087864484313 (RIZKI)<br>
+  GOPAY: 087864484313 (RIZKI)<br>
+  QR: Minta Admin 💸
+  </p>
+
+  <br>
+
+  <a href="https://wa.me/639752925414?text=Mau+Order+JPM+Bang">
+    <button class="btn">💬 CHAT WHATSAPP</button>
+  </a>
+
+</div>
+
+<!-- SOUND -->
+<audio id="klik" src="https://www.myinstants.com/media/sounds/mouse-click.mp3"></audio>
+
+<audio id="welcome" src="https://www.myinstants.com/media/sounds/anime-wow-sound-effect.mp3"></audio>
+
+<script>
+
+/* WAKTU INDONESIA */
+let jam = new Date().getHours();
+let teks = "Selamat Datang";
+
+if(jam >= 4 && jam < 10) teks = "Selamat Pagi";
+else if(jam < 15) teks = "Selamat Siang";
+else if(jam < 18) teks = "Selamat Sore";
+else teks = "Selamat Malam";
+
+document.getElementById("waktu").innerText = "Halo Kak, " + teks;
+
+/* OPEN LIST */
+function openList(){
+  document.getElementById("list").classList.toggle("active");
+  document.getElementById("klik").play();
+}
+
+/* PARTICLE */
+for(let i=0;i<60;i++){
+  let p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"%";
+  p.style.animationDuration=(Math.random()*3+2)+"s";
+  document.body.appendChild(p);
+}
+
+/* SUARA WELCOME */
+window.addEventListener("click", function(){
+  document.getElementById("welcome").play();
+},{once:true});
+
+</script>
+
+</body>
+</html>
